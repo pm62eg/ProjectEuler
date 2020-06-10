@@ -19,7 +19,7 @@ int main(void) {
         while (m % 13 == 0) { m /= 13; kk[13]++; }
         while (m % 17 == 0) { m /= 17; kk[17]++; }
         while (m % 19 == 0) { m /= 19; kk[19]++; }
-        for (int m = 0; m <= LIMIT; m++) if (kk[m] > k[m]) k[m] = kk[m];
+        for (int nn = 0; nn <= LIMIT; nn++) if (kk[nn] > k[nn]) k[nn] = kk[nn];
     }
     int p = 1;
     for (int n = 2; n <= LIMIT; n++) {
