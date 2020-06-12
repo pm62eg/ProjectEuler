@@ -31,7 +31,7 @@ int main(void) {
         }
         np++;
         ch = fgetc(h); // read and discard [optional] comma
-        if (ch == EOF) break;
+        if (ch != ',') break;
     }
     fclose(h);                              // assume it worked
     qsort(p, np, sizeof *p, cmp);
