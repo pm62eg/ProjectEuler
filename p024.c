@@ -10,7 +10,7 @@ int main(void) {
     f[7] = f[6] * 7;
     f[8] = f[7] * 8;
     f[9] = f[8] * 9;
-    int target = 1000000;
+    int target = 1000000 - 1; // first permutation is already counted
     int r[10] = {0};
     r[9] = target/f[9]; target -= (r[9]*f[9]);
     r[8] = target/f[8]; target -= (r[8]*f[8]);
