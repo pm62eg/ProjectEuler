@@ -2,11 +2,6 @@
 ** digit cancelling fractions
 */
 
-/*
-** a * b = c, where a<b and #a + #b + #c = 9
-** implies #a = 2, #b = 3, #c = 4
-*/
-
 #include <stdio.h>
 
 int gcd(int a, int b) {
