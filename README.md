@@ -1,2 +1,2 @@
 # ProjectEuler
-C solutions for project euler problems
+C brute-force solutions for project euler problems
