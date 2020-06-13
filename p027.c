@@ -62,7 +62,7 @@ int isprime(struct IntArray *a, int p) {
 }
 
 int main(void) {
-    struct IntArray p[1] = {16, 4};
+    struct IntArray p[1];
     p->m = 16;
     p->data = malloc(p->m * sizeof *p->data);
     // assume it worked
