@@ -5,6 +5,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// with the help of Wikipedia
+// https://en.wikipedia.org/wiki/Permutation
 int makenext(char *a, int n) {
     //1. find the largest k for which a[k] < a[k+1]
     //   if it does not exist return 1
