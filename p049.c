@@ -78,8 +78,8 @@ int main(void) {
         if (!isprime(prime, p1)) continue;
         for (unsigned delta = 6; delta < 5000; delta += 6) {
 //            if ((p1 == 1487) && (delta == 3330)) {
- //               printf("reached 1st solution\n");
-  //          }
+//                printf("reached 1st solution\n");
+//            }
             unsigned p2 = p1 + delta;
             if (p2 >= 10000) continue;
             if (!isprime(prime, p2)) continue;
