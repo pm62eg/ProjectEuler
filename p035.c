@@ -183,4 +183,6 @@ int main(void) {
         }
     }
     printf("there are %d circular primes with 6 or fewer digits.\n", B->n);
+    free(B->data);
+    free(p->data);
 }

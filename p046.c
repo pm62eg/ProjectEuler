@@ -102,5 +102,7 @@ int main(void) {
             }
         }
     }
+    free(prime->data);
+    free(square2->data);
     printf("smallest odd composite is %u.\n", n);
 }

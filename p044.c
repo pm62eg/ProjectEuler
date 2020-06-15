@@ -60,5 +60,6 @@ int main(void) {
         col++;
         if (col == row) { row++; col=1; }
     }
+    free(P->data);
     printf("value of D is %d.\n", D);
 }

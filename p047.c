@@ -111,5 +111,7 @@ int main(void) {
         }
         n++;
     }
+    free(prime->data);
+    free(factor->data);
     printf("smallest of four consecutive integer is %u.\n", n);
 }

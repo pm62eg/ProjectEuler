@@ -29,5 +29,6 @@ int main(void) {
         }
         n += 2;
     }
+    free(p);
     printf("sum is %llu\n", sum);
 }

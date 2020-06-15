@@ -91,5 +91,6 @@ int main(void) {
             printf("primes %u, %u, and %u\n", p1, p2, p3);
         }
     }
+    free(prime->data);
     printf("done\n");
 }

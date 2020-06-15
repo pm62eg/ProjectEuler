@@ -89,5 +89,6 @@ int main(void) {
         }
         if (k == 11) break;
     }
+    free(p->data);
     printf("sum of truncatable primes is %d.\n", sum);
 }

@@ -92,5 +92,6 @@ int main(void) {
             }
         }
     }
+    free(p->data);
     printf("the product for %d primes is at %d.\n", maxprimes, maxa * maxb);
 }

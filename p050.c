@@ -72,5 +72,6 @@ int main(void) {
             }
         }
     }
+    free(prime->data);
     printf("done\n");
 }

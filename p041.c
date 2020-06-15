@@ -72,6 +72,7 @@ int main(void) {
         nnn = 1000000*a+100000*b+10000*c+1000*d+100*e+10*f+g;
         if (isprime(p, nnn)) a=b=c=d=e=f=g=0;
     }
+    free(p->data);
 
     printf("the largest pandigital prime is %d.\n", nnn);
 }

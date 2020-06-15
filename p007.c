@@ -23,4 +23,5 @@ int main(void) {
     }
     for (int k = 0; k < nprimes; k++) printf("prime #%d: %d\n", k + 1, primes[k]);
     printf("The %dth prime is %d\n", N, primes[N-1]);
+    free(primes);
 }
