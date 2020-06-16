@@ -71,7 +71,7 @@ void recurse(struct UnsignedArray *p, const char *s, int stars) {
         if (primecount >= 8) printf("family %s has %d primes staring with %d\n", s, primecount, smallestprime);
     } else {
         for (int i = 0; i <= slen; i++) {
-//            if (s[i] == '*') continue;
+            if (s[i] == '*') continue;
             sprintf(ss, "%.*s*%.*s", i, s, slen - i, s + i);
             recurse(p, ss, stars - 1);
         }
@@ -92,7 +92,7 @@ int main(void) {
     for (int ll = 1; ll < 1000; ll += 2) {
         char tt[10];
         sprintf(tt, "%03d", ll);
-        recurse(prime, tt, 3);
+        if (tt[2] != '5') recurse(prime, tt, 3);
     }
 
     free(prime->data);
