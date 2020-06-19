@@ -31,8 +31,7 @@
             (loop for i from 3 by 2         ; do 3, 5, 7, 9, ...
                   while (>= n (* i i))      ; until sqrt of what's left of n
                   do (transfer-factor i)))
-        (if (= n 1)
-            result
-            (cons n result))))              ; if n is not 1 it is also a factor
+        (when (> n 1) (push n result))      ; n may still be a factor
+        result))                            ; return complete list
 ;; in the repl do
 ;; (first (factors (600851475143)))
