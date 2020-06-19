@@ -64,6 +64,17 @@
 ;; in the repl use
 ;; (e001-predicate-sum-iterative #'e001-multiple-of-3-or-5p 1000)
 
+(defun e001-sum-arithmetic-series (delta lastvalue)
+    "sum of 0, d, 2*d, 3*d, ... k*d <= lastvalue < (k+1)*d"
+    (let* ((nterms (floor lastvalue delta))
+           (lastterm (* nterms delta)))
+        (/ (* (1+ nterms) lastterm) 2)))
+;; in the repl use
+;; (+ (e001-sum-arithmetic-series 3 999)
+;;    (e001-sum-arithmetic-series 5 999)
+;;    (- (e001-sum-arithmetic-series 15 999)))
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  euler 002  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -144,3 +155,17 @@
         result))                            ; return complete list
 ;; in the repl do
 ;; (first (e003-factors (600851475143)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;  euler 004  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;; Largest palindrome product
+;;;
+;;; A palindromic number reads the same both ways.
+;;; The largest palindrome made from the product of two
+;;; 2-digit numbers is 9009 = 91 × 99.
+;;;
+;;; Find the largest palindrome made from
+;;; the product of two 3-digit numbers.
+
