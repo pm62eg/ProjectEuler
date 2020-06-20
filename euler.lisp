@@ -26,8 +26,6 @@
     (cond ((= n 0) 0)
           (t (+ (if (e001-multiple-of-3-or-5p n) n 0) ; add 0 or n
                 (e001-v1-sum35 (- n 1))))))           ; to the recursion
-;; in the repl use
-;; (e001-v1-sum35 999)
 
 (defun e001-v2-sum35 (n)
     "recursively sum all multiples of 3 or 5 up to n (including n)"
@@ -35,15 +33,11 @@
         0
         (+ (if (e001-multiple-of-3-or-5p n) n 0) ; add 0 or n
            (e001-v2-sum35 (1- n)))))             ; to the recursion
-;; in the repl use
-;; (e001-v2-sum35 999)
 
 (defun e001-sum35-iterative (n)
     "sum all multiples of 3 or 5 below n (excluding n)"
     (loop for i below n
           when (e001-multiple-of-3-or-5p i) sum i))
-;; in the repl use
-;; (e001-sum35-iterative 1000)
 
 ;;; what if I want to use a different predicate?
 ;;; Pass the predicate to the function, as a first-class value
@@ -54,26 +48,22 @@
           (t (+
               (if (funcall predicate n) n 0)                         ; add n or 0 and
               (e001-predicate-sum-recursive predicate (- n 1))))))   ; the recursed sum to (n - 1)
-;; in the repl use
-;; (e001-predicate-sum-recursive #'e001-multiple-of-3-or-5p 999)
 
 (defun e001-predicate-sum-iterative (predicate n)
     "sum integers below n (excluding n) that match the predicate"
     (loop for i below n
           when (funcall predicate i) sum i))
-;; in the repl use
-;; (e001-predicate-sum-iterative #'e001-multiple-of-3-or-5p 1000)
 
 (defun e001-sum-arithmetic-series (delta lastvalue)
     "sum of 0, d, 2*d, 3*d, ... k*d <= lastvalue < (k+1)*d"
     (let* ((nterms (floor lastvalue delta))
            (lastterm (* nterms delta)))
         (/ (* (1+ nterms) lastterm) 2)))
-;; in the repl use
-;; (+ (e001-sum-arithmetic-series 3 999)
-;;    (e001-sum-arithmetic-series 5 999)
-;;    (- (e001-sum-arithmetic-series 15 999)))
 
+(defun e001 ()
+    (+ (e001-sum-arithmetic-series 3 999)
+       (e001-sum-arithmetic-series 5 999)
+    (- (e001-sum-arithmetic-series 15 999))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  euler 002  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -100,8 +90,9 @@
           (f-next 1 (+ f-1 f-2)))
         ((> f-next n) sum) ; return sum when next > n
         (if (evenp f-next) (incf sum f-next))))
-;; in the repl use
-;; (e002-even-fib-sum 4000000)
+
+(defun e002 ()
+    (e002-even-fib-sum 4000000))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  euler 003  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -130,8 +121,6 @@
         (if (= n 1)
             result
             (cons n result))))              ; if n is not 1 it is also a factor
-;; in the repl do
-;; (first (e003-v1-factors (600851475143)))
 
 ;; use `flet` to refactor inner loop
 ;; rather than `rem` and `/` in two instruction use `floor`
@@ -153,8 +142,9 @@
                   do (transfer-factor i)))
         (when (> n 1) (push n result))      ; n may still be a factor
         result))                            ; return complete list
-;; in the repl do
-;; (first (e003-factors (600851475143)))
+
+(defun e003 ()
+    (first (e003-factors 600851475143)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;  euler 004  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -202,5 +192,3 @@
                             (setf nextb (- 1 nextb))
                             (setf b (- a nextb))
                             (setf sum (- sum 1))))))
-;; in the repl do
-;; (e004)
