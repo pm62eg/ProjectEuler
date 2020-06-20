@@ -176,19 +176,22 @@
               (= (nth 1 dd) (nth 4 dd))
               (= (nth 0 dd) (nth 5 dd)))))
 
-(defun e004 ()
+(defun e004-largest-palindrome-in-square (siz)
     "find maximum palindrome product"
-    (do* ((a 999)
-          (b 999)
+    (do* ((a siz)
+          (b siz)
           (nextb)
-          (sum (+ 999 999))
+          (sum (+ siz siz))
           (p (* a b) (* a b)))
          ((e004-palindrome6p p) p)
        ;; following half diagonals ensures (proof needed?)
        ;; the first palindrome product found is the largest
        (setf a (+ a 1))
        (setf b (- b 1))
-       (if (> a 999) (progn (setf (values a nextb) (floor sum 2))
-                            (setf nextb (- 1 nextb))
-                            (setf b (- a nextb))
-                            (setf sum (- sum 1))))))
+       (if (> a siz) ; start next diagonal
+           (progn (setf (values a nextb) (floor sum 2))
+                  (setf b (+ a nextb -1))
+                  (setf sum (- sum 1))))))
+
+(defun e004 ()
+    (e004-largest-palindrome-in-square 999))
