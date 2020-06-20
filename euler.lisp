@@ -172,9 +172,9 @@
     "determine if the 6-digit number n6 is a palindrome (in base 10)"
     (assert (and (integerp n6) (>= n6 100000) (<= n6 999999)))
     (let ((dd (e004-digits n6)))
-         (and (= (nth 0 dd) (nth 5 dd))
+         (and (= (nth 2 dd) (nth 3 dd))
               (= (nth 1 dd) (nth 4 dd))
-              (= (nth 2 dd) (nth 3 dd)))))
+              (= (nth 0 dd) (nth 5 dd)))))
 
 (defun e004 ()
     "find maximum palindrome product"
