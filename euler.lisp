@@ -360,13 +360,6 @@
     (loop for k from 0 to (- (length data) len)
           maximize (e008-multseq data k len)))
 
-(defun e008-check-off-by-one-error ()
-    (let ((data "1111112"))
-         (print (list data (e008-max-multseq data 3))))
-    (let ((data "1111123"))
-         (print (list data (e008-max-multseq data 3))))
-    t)
-
 (defun e008 ()
     (let ((data (concatenate 'string "73167176531330624919225119674426574742355349194934"
                                      "96983520312774506326239578318016984801869478851843"
