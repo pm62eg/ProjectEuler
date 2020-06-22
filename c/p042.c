@@ -18,7 +18,7 @@ int tri(int v) {
 int main(void) {
     int count = 0;
     char word[100];
-    FILE *h = fopen("p042_words.txt", "r");
+    FILE *h = fopen("../p042_words.txt", "r");
     for (;;) {
         fgetc(h); // ignore quotes
         int ch;

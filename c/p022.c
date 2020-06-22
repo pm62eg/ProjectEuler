@@ -20,7 +20,7 @@ int cmp(const void *aa, const void *bb) {
 int main(void) {
     struct P22 p[6000] = {0};
     int np = 0;
-    FILE *h = fopen("p022_names.txt", "r"); // assume it worked
+    FILE *h = fopen("../p022_names.txt", "r"); // assume it worked
     for (;;) {
         int ch;
         char *t = p[np].name;
