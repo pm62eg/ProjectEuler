@@ -300,7 +300,7 @@
                         (block innerif
                             (setf (aref pa last-index) candidate)
                             (incf last-index)))
-                    do (when (= last-index nprimes) (return))))))
+                    until (= last-index nprimes)))))
 
 (defun e007-primes (n)
     "fill an array with n primes, return the last prime"
