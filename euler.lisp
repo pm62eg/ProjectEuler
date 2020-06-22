@@ -345,16 +345,27 @@
 ;;; that have the greatest product.
 ;;; What is the value of this product?
 
+(defun e008-digit-value (ch)
+    "character digit as integer (#\0 as 0, #\1 as 1, ...)"
+    (- (char-code ch) (char-code #\0)))
+
 (defun e008-multseq (data index terms)
     "multiply `terms` digits from data starting at index"
     (do ((res 1)
          (ndx index (1+ ndx)))
         ((or (zerop res) (= ndx (+ index terms))) res)
-        (setf res (* res (- (char-code (aref data ndx)) (char-code #\0))))))
+        (setf res (* res (e008-digit-value (aref data ndx))))))
 
-(defun e008-helper (data len)
+(defun e008-max-multseq (data len)
     (loop for k from 0 to (- (length data) len)
           maximize (e008-multseq data k len)))
+
+(defun e008-check-off-by-one-error ()
+    (let ((data "1111112"))
+         (print (list data (e008-max-multseq data 3))))
+    (let ((data "1111123"))
+         (print (list data (e008-max-multseq data 3))))
+    t)
 
 (defun e008 ()
     (let ((data (concatenate 'string "73167176531330624919225119674426574742355349194934"
@@ -377,4 +388,4 @@
                                      "84580156166097919133875499200524063689912560717606"
                                      "05886116467109405077541002256983155200055935729725"
                                      "71636269561882670428252483600823257530420752963450")))
-         (e008-helper data 13)))
+         (e008-max-multseq data 13)))
