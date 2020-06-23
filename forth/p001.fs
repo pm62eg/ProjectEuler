@@ -9,29 +9,29 @@
 \ Find the sum of all the multiples of 3 or 5 below 1000.
 
 \ determine if n is a multiple of 3 or 5
-: e001-m35?      (     n - flag )
-    dup          (   n n -      )
-    3 mod        ( n n%3 -      )
-    0 = if       (     n -      )
-        drop -1  (       - flag ) \ it is a multiple of 3
-    else         (     n -      )
-        5 mod    (   n%5 -      )
+: e001-m35?      (     n -- flag )
+    dup          (   n n --      )
+    3 mod        ( n n%3 --      )
+    0 = if       (     n --      )
+        drop -1  (       -- flag ) \ it is a multiple of 3
+    else         (     n --      )
+        5 mod    (   n%5 --      )
         0 = if
-            -1   (       - flag ) \ it is a multiple of 5
+            -1   (       -- flag ) \ it is a multiple of 5
         else
-            0    (       - flag ) \ not a multiple of either 3 or 5
+            0    (       -- flag ) \ not a multiple of either 3 or 5
         then
     then ;
 
 \ sum multiples of 3 or 5 up to, excluding, n
-: e001-summ35           (     n - sum )
-    0 swap              ( sum n -     ) \ 0 to start sum
+: e001-summ35           (     n -- sum )
+    0 swap              ( sum n --     ) \ 0 to start sum
     1 do                                \ loop from 1 to n
-        i e001-m35? if  (   sum -     )
-            i           ( sum i -     )
-            +           (   sum -     )
-        then            (   sum -     )
-    loop ;              (       - sum )
+        i e001-m35? if  (   sum --     )
+            i           ( sum i --     )
+            +           (   sum --     )
+        then            (   sum --     )
+    loop ;              (       -- sum )
 
 : euler001
     1000 e001-summ35 . ;
