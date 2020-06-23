@@ -18,28 +18,30 @@
     repeat
     drop ;
 
-variable currfactor
+variable e003-currfactor
 \ decompose n into k factors (stacked, largest on top)
 : e003-movefactors          (         n - <k factors> k       )
     0 swap                  (         n - 0 n                 )
     2 e003-movefactor       (     0 n 2 - [2 2 ...] f n[/2^f] )
-    3 currfactor !
+    3 e003-currfactor !
     begin
-        currfactor @
-        e003-movefactor     ( ... k n i - .... 3 3 k+2 n/3/3  )
-        2 currfactor @ +
-        dup currfactor !    ( ... - ... n f )
-        dup * over          ( ... - ... n f*f n )
-    > until                 ( ... - ... k n )
-    dup 1 = if
-        drop                \ drop remaining 1
-    else                    \ if remaining n is not 1
-        swap 1 +            \ it is a factor
+        e003-currfactor @
+        e003-movefactor          ( ... k n i - .... i i newk newn )
+        2 e003-currfactor @ +
+        dup e003-currfactor !    ( ... - ... n f )
+        dup * over               ( ... - ... n f*f n )
+    > until                      ( ... - ... k n )
+    dup 1 = if                   \ if remaining n is 1
+        drop                     \     drop it
+    else                         \ otherwise
+        swap 1 +                 \     it is a factor
     then ;
+
+: e003-clearstack       ( f1 f2 ... fk k - )
+    0 do drop loop ;    \ remove k itself and k stack entries
 
 : euler003
     600851475143        ( n -                )
     e003-movefactors    ( n - f1 f2 ... fk k ) \ k is count of factors
-    drop .              \ drop nfactors, print largest
-    begin drop          \ clear stack
-    depth while repeat ;
+    over .              \ print largest factor
+    e003-clearstack ;
