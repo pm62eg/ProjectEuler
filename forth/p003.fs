@@ -18,17 +18,15 @@
     repeat
     drop ;
 
-variable e003-currfactor
 \ decompose n into k factors (stacked, largest on top)
 : e003-movefactors          (         n -- <k factors> k       )
     0 swap                  (         n -- 0 n                 )
     2 e003-movefactor       (     0 n 2 -- [2 2 ...] f n[/2^f] )
-    3 e003-currfactor !
+    3 locals| cf |          \ currentfactor: 3, 5, 7, 9, 11, ...
     begin
-        e003-currfactor @
-        e003-movefactor          ( ... k n i -- .... i i newk newn )
-        2 e003-currfactor @ +
-        dup e003-currfactor !    ( ... -- ... n f )
+        cf e003-movefactor       ( ... k n i -- .... i i newk newn )
+        2 cf +
+        dup to cf                ( ... -- ... n f )
         dup * over               ( ... -- ... n f*f n )
     > until                      ( ... -- ... k n )
     dup 1 = if                   \ if remaining n is 1
