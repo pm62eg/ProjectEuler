@@ -10,17 +10,13 @@
 \ By considering the terms in the Fibonacci sequence whose values
 \ do not exceed four million, find the sum of the even-valued terms.
 
-\ calculate next fib, update accum if needed
-: e002-nextaddeven ( accum a b -- accum b a+b )
-    tuck +                     \ next fibonacci
-    dup 2 mod 0= if            \ if even
-        rot over + -rot then ; \ add to accum
+: e002-even? 2 mod 0= ;
+: e002-nextfib ( a b -- b a+b ) tuck + ;
+: e002-addifeven dup e002-even? if      \ if even
+                 rot over + -rot then ; \ add to sum
 
-\ evaluate fibonacci, update accum, and test if limit is reached
-: e002-mainloop ( limit accum a b -- limit accum a b )
-    begin e002-nextaddeven      \ calculate [and add] next fibonacci
-          3 pick over < until ; \ check for limit
+: e002-nextaddifeven e002-nextfib e002-addifeven ;
+: e002-sumeven begin e002-nextaddifeven 3 pick over <= until ;
 
-: euler002
-    4000000 0 1 1 e002-mainloop
-    drop drop . drop ;  \ print accum, clear stack
+: e002-sumevenfibs ( n -- sum ) 0 1 1 e002-sumeven 2drop swap drop ;
+: euler002 4000000 e002-sumevenfibs . ;
