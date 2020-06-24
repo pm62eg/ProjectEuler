@@ -1,6 +1,5 @@
-\  euler 002
-
 \ Even Fibonacci numbers
+\ Problem 2
 
 \ Each new term in the Fibonacci sequence is generated
 \ by adding the previous two terms. By starting with 1 and 2,

@@ -1,6 +1,5 @@
-\ euler 003
-
 \ Largest palindrome product
+\ Problem 4
 
 \ A palindromic number reads the same both ways.
 \ The largest palindrome made from the product of two 2-digit numbers
