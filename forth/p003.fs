@@ -34,11 +34,8 @@
         swap 1 +                 \     it is a factor
     then ;
 
-: e003-clearstack       ( f1 f2 ... fk k -- )
-    0 do drop loop ;    \ remove k itself and k stack entries
+\ stack has factors and amount: ( f1 f2 ... fn n )
+: e003-clearstack 0 do drop loop ;
 
-: euler003
-    600851475143        ( n --                )
-    e003-movefactors    ( n -- f1 f2 ... fk k ) \ k is count of factors
-    over .              \ print largest factor
-    e003-clearstack ;
+: euler003 600851475143 e003-movefactors
+    ( f1 ... fn n )     over . e003-clearstack ;

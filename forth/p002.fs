@@ -13,7 +13,7 @@
 : e002-even? 2 mod 0= ;
 : e002-nextfib ( a b -- b a+b ) tuck + ;
 : e002-addifeven dup e002-even? if      \ if even
-                 rot over + -rot then ; \ add to sum
+    ( sum a b )  rot over + -rot then ; \ add to sum
 
 : e002-nextaddifeven e002-nextfib e002-addifeven ;
 : e002-sumeven begin e002-nextaddifeven 3 pick over <= until ;
