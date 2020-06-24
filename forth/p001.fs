@@ -7,18 +7,10 @@
 
 \ Find the sum of all the multiples of 3 or 5 below 1000.
 
-\ determine if n is a multiple of 3 or 5
-: e001-m35? ( n -- flag )
-    dup
-    3 mod 0= if exit then \ leave n (true) in the stack
-    5 mod 0= ;            \ leave test in the stack
+: e001-m35? ( n -- f ) dup 3 mod 0= if exit then 5 mod 0= ;
 
 \ sum multiples of 3 or 5 up to, excluding, n
-: e001-summ35 ( n -- sum )
-    0 swap 1 do             \ loop from 1 to n, add to TOS
-        i e001-m35? if
-            i + then        \ add i when true
-    loop ;
+: e001-summ35 ( n -- sum ) 0 swap 1 do
+                           i e001-m35? if i + then loop ;
 
-: euler001
-    1000 e001-summ35 . ;
+: euler001 1000 e001-summ35 . ;
