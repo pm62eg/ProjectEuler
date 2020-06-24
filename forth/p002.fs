@@ -18,5 +18,5 @@
 : e002-nextaddifeven e002-nextfib e002-addifeven ;
 : e002-sumeven begin e002-nextaddifeven 3 pick over <= until ;
 
-: e002-sumevenfibs ( n -- sum ) 0 1 1 e002-sumeven 2drop swap drop ;
+: e002-sumevenfibs ( n -- sum ) 0 1 1 e002-sumeven 2drop nip ;
 : euler002 4000000 e002-sumevenfibs . ;
