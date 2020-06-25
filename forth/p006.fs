@@ -14,19 +14,7 @@
 \ Find the difference between the sum of the squares
 \ of the first one hundred natural numbers and the square of the sum.
 
-: e006-sumofsquares ( n -- [1^2 + 2^2 + ... + n^2] )
-    0 swap      \ accumulator
-    1 + 1 do
-        i i * +
-    loop ;
+: e006-sumofsquares 0 swap 1 + 1 do i i * + loop       ;
+: e006-squareofsum  0 swap 1 + 1 do i     + loop dup * ;
 
-: e006-squareofsum ( n -- [1 + 2 + ... + n]^2 )
-    0 swap      \ accumulator
-    1 + 1 do
-        i +
-    loop dup * ;
-
-: euler006
-    100 e006-squareofsum
-    100 e006-sumofsquares
-    - . ;
+: euler006 100 e006-squareofsum 100 e006-sumofsquares - . ;
