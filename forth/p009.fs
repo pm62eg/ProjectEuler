@@ -12,7 +12,7 @@
 \ Find the product abc.
 
 : e009-3sum
-    1000 0 do
+    1000 1 do
         1000 i do
             1000 i - j - dup * j j * i i * + = if i j . . then
         loop
