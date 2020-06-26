@@ -11,10 +11,12 @@
 \ There exists exactly one Pythagorean triplet for which a + b + c = 1000.
 \ Find the product abc.
 
+: e009-prod3print 2dup * rot rot  1000 swap - swap - * . ;
+
 : e009-3sum
     1000 1 do
         1000 i do
-            1000 i - j - dup * j j * i i * + = if i j . . then
+            1000 i - j - dup * j j * i i * + = if i j e009-prod3print then
         loop
     loop ;
 
