@@ -15,11 +15,9 @@
 : e009-pythagorean? dup * rot dup * rot dup * + = ;
 
 : e009-3sum
-    dup 1 do
-        dup i do
-             dup i - j - i j rot e009-pythagorean? if dup i j e009-prod3print then
-        loop
-    loop ;
+    dup 1 do dup i do
+         dup i - j - i j rot e009-pythagorean? if dup i j e009-prod3print then
+    loop loop ;
 
 : euler009
     1000 e009-3sum ;
