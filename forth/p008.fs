@@ -32,12 +32,19 @@ s" 73167176531330624919225119674426574742355349194934969835203127745063262395783
 ( ...450" )
    2constant e008-input-string
 
-: e008-multNdigits ( a n -- p )
-    1 rot rot over + swap do i c@ [char] 0 - * loop ;
+\ stack comment legend
+\ a address; w width, p product, l length, M maxproduct
 
-: euler008 ( w a l -- m )
-    0 3 pick rot - rot tuck swap - swap ( w 0 a+l-w a )
-    do over i swap e008-multNdigits max
-    loop swap drop ;
+\ multiply w consecutive digits from a
+\ uses w internally but keeps it on stack for next loop
+: e008-multNdigits ( w a -- w p )
+    2dup + 1 rot rot swap         \  ( w 1 w+a a )
+    do i c@ [char] 0 - * loop ;   \ keep *ing each char with the 1
+
+: euler008 ( w a l -- M )
+    \ set up stack
+    >r >r 0 over rot r> dup rot - r> + swap ( 0 w a-w+l a )
+    do i e008-multNdigits rot max swap
+    loop drop ;
 
 \ run with, eg: 13 e008-input-string euler008 .
