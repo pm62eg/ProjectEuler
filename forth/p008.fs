@@ -39,7 +39,7 @@ s" 73167176531330624919225119674426574742355349194934969835203127745063262395783
 \ uses w internally but keeps it on stack for next loop
 : e008-multNdigits ( w a -- w p )
     2dup + 1 rot rot swap         \  ( w 1 w+a a )
-    do i c@ [char] 0 - * loop ;   \ keep *ing each char with the 1
+    do i c@ [char] 0 - * loop ;   \ keep *ing each digit with the 1
 
 : euler008 ( w a l -- M )
     \ set up stack
